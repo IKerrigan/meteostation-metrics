@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    link(rel='stylesheet' href='stylesheets/style.css')
+  body
+    .col-md-6
+      block content
+    .col-md-6
+      block history
+        h2='Last 10 records:'
+        br
+        each val in history
+          .mb-5
+            div
+              p Timestamp :#{ new Date(val.timestamp).toLocaleString() || 'No information' }
+              p Temperature #{val.t || 'No information'}
+              p Humidity #{val.h || 'No information' }
+
+          
+
+
+        
