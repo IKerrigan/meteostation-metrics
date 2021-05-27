@@ -1,20 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res, next) {
-  let history = req.metricStorage.getAllSorted();
-  let actual = req.metricStorage.getActual() || {};
+router.get('/', async function (req, res) {
+  let history = await req.metricStorage.getLast10();
 
-  res.render('index', { title: 'Meteostation', actual, history });
+  res.render('index', {
+    title: 'Meteostation',
+    actual: history[0] || {},
+    history,
+  });
 });
 
-router.put('/', function (req, res, next) {
-  req.metricStorage.push({
-    ...req.body,
-    timestamp: Date.now(),
-  });
-
-  console.log(req.metricStorage.getAll());
+router.put('/', async function (req, res, next) {
+  await req.metricStorage.add(req.body);
   res.end();
 });
 

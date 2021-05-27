@@ -15,7 +15,7 @@ html
         each val in history
           .mb-5
             div
-              p Timestamp :#{ new Date(val.timestamp).toLocaleString() || 'No information' }
+              p Date: #{ new Date(val.createdAt).toLocaleString() || 'No information' }
               p Temperature #{val.t || 'No information'}
               p Humidity #{val.h || 'No information' }
 

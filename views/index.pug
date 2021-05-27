@@ -3,6 +3,6 @@ extends layout
 block content
   h2='Actual metrics:'
   br
-  p Time: #{ new Date(actual.timestamp || Date.now()).toLocaleString() || 'No information' }
+  p Date: #{ new Date(actual.createdAt || Date.now()).toLocaleString() || 'No information' }
   p Temperature: #{actual.t || 'No information'}
   p Humidity: #{actual.h || 'No information' }
