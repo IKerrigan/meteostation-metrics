@@ -1,8 +1,16 @@
 extends layout
 
 block content
-  h2='Actual metrics:'
-  br
-  p Date: #{ new Date(actual.createdAt || Date.now()).toLocaleString() || 'No information' }
-  p Temperature: #{actual.t || 'No information'}
-  p Humidity: #{actual.h || 'No information' }
+  h2.card-title='Actual metrics:'
+  div.card.card-body.bg-light.border-info
+    p 
+      strong Date: 
+      | #{ new Date(actual.createdAt || Date.now()).toLocaleString() || 'No information' }
+
+    p 
+     strong Temperature: 
+     | #{ actual.t || 'No information'}
+
+    p 
+      strong Humidity: 
+      | #{ actual.h || 'No information' }
